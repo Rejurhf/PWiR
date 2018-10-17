@@ -1,0 +1,123 @@
+V "GNAT Lib v8"
+M P W=b
+P ZX
+
+RN
+RV NO_CALENDAR
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_ATTRIBUTES
+RV SPARK_05
+
+U zad1%b		zad1.adb		e64e050f NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W ada.float_text_io%s	a-flteio.ads		a-flteio.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.float_random%s  a-nuflra.adb	a-nuflra.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z system.concat_3%s	s-conca3.adb		s-conca3.ali
+Z system.img_bool%s	s-imgboo.adb		s-imgboo.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.img_lld%s	s-imglld.adb		s-imglld.ali
+
+D ada.ads		20170911084841 76789da1 ada%s
+D a-calend.ads		20180111085525 2d5f01d4 ada.calendar%s
+D a-except.ads		20180111085525 291912d5 ada.exceptions%s
+D a-flteio.ads		20170908151217 e18a47a0 ada.float_text_io%s
+D a-ioexce.ads		20170908151217 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20170908151217 bb51c45a ada.numerics%s
+D a-nuflra.ads		20180111085525 4056ab7a ada.numerics.float_random%s
+D a-stream.ads		20180111085525 119b8fb3 ada.streams%s
+D a-tags.ads		20180111085525 491b781d ada.tags%s
+D a-textio.ads		20180111085525 881db35a ada.text_io%s
+D a-tiflio.ads		20180111085525 56fbda09 ada.text_io.float_io%s
+D a-unccon.ads		20170908151217 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20180111085525 5ab55268 interfaces%s
+D i-cstrea.ads		20180111085525 e53d8b8e interfaces.c_streams%s
+D system.ads		20180111085525 4635ec04 system%s
+D s-conca3.ads		20180111085525 0b705ca5 system.concat_3%s
+D s-crtl.ads		20180111085525 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180111085525 54135002 system.exception_table%s
+D s-ficobl.ads		20180111085525 078245e4 system.file_control_block%s
+D s-imgboo.ads		20180111085525 f5d971eb system.img_bool%s
+D s-imgint.ads		20180111085525 02dbe0c2 system.img_int%s
+D s-imglld.ads		20180111085525 f3220969 system.img_lld%s
+D s-parame.ads		20180111085525 f896c45c system.parameters%s
+D s-rannum.ads		20180111085525 99ade2f2 system.random_numbers%s
+D s-secsta.ads		20180111085525 283dec34 system.secondary_stack%s
+D s-soflin.ads		20180111085525 a7318a92 system.soft_links%s
+D s-stache.ads		20180111085525 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180111085525 09bd3940 system.standard_library%s
+D s-stoele.ads		20180111085525 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180111085525 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180111085525 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180111085525 1b7d22d2 system.wch_con%s
+D zad1.adb		20181017194632 e2d05b5b zad1%b
+X 1 ada.ads
+16K9*Ada 20e8 33|4r6 4r19 4r38 4r65 5r5 5r18 5r37 5r64
+X 2 a-calend.ads
+36K13*Calendar 395e17 33|4w69 5r68
+44I9*Time<213I9> 33|13r13
+58V13*Clock{44I9} 33|68s11 83s11
+105V14*"-"{duration} 33|84s13
+213I9 Time_Rep<long_long_integer>
+X 4 a-flteio.ads
+20K13*Float_Text_IO[11|46] 33|4w23 5r22
+X 6 a-numeri.ads
+16K13*Numerics 32e17 33|4r42 5r41
+X 7 a-nuflra.ads
+41K22*Float_Random 74e30 33|4w51 5r50
+47R9*Generator<24|63R9> 33|11r10
+49F12*Uniformly_Distributed{float}
+51V13*Random{49F12}<24|71p13> 33|32s21
+53U14*Reset<24|100p14> 33|30s9
+X 10 a-textio.ads
+49K13*Text_IO 471e16 33|4w10 5r9
+52P9*File_Type 33|15r9
+53n32*Out_File{53E9} 33|51r20
+86U14*Create 33|51s9
+98U14*Close 33|60s9
+166U14*New_Line 33|23s13 25s9 75s5 81s5
+241U14*Put 33|53s9 56s13 59s9
+242U14*Put 33|21s13 73s5 74s5 79s5 80s5
+259U14*Put_Line 33|52s9
+263U14*Put_Line 33|85s5
+X 11 a-tiflio.ads
+61U14*Put 33|55s13[4|20] 58s9[4|20]
+68U14*Put 33|22s13[4|20]
+X 33 zad1.adb
+7U11*Zad1 7b11 88l5 88t9
+8A10 Vector(float)<integer> 9r9 10r9 18r24 28r33 36r27 49r23 64r27
+9a5 V1{8A10} 69r11 74r19 77m10 78r11 80r19 87r10
+10a5 V2{8A10} 70m16 71r11
+11r5 Gen{7|47R9} 30r15 32r28
+12f5 Tmp{float} 41m21 43r31
+13i5 T1{2|44I9} 68m5 84r15
+13i9 T2{2|44I9} 83m5 84r10
+14o5 D{duration} 84m5 85r45
+15p5 Pl{10|52P9} 51m16 51r16 52r18 53r13 55r17 56r17 58r13 59r13 60m15 60r15
+16a5 FileName{string}
+18U15 Print 18b15 18>21 26l9 26t14 69s5 71s5 78s5
+18a21 V{8A10} 20r21 22r17
+20i13 elem{integer} 21r26 22r19
+28U15 FillVector 28b15 28<26 34l9 34t19 70s5
+28a26 V{8A10} 31m21 31r21
+31f13 elem=31:21{float} 32r13
+36U15 Sort 36b15 36<20 47l9 47t13 77s5
+36a20 V{8A10} 38r18 39r22 39r32 40r20 40r27 41r28 42m21 42r29 43m21
+38i13 i{integer} 39r39
+39i17 j{integer} 40r22 40r29 41r30 42r23 42r31 43r23
+49U15 Save 49b15 49>20 49>31 61l9 61t13 87s5
+49a20 V{8A10} 54r18 54r27 55r21 58r17 58r19
+49a31 FileName{string} 51r30
+54i13 i{integer} 55r23
+64V14 Is_Sorted{boolean} 64>24 74s9 80s9
+64a24 V{8A10} 65r23 65r33 65r46 65r54
+65i18 I{integer} 65r48 65r56
+

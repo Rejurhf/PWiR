@@ -1,0 +1,92 @@
+V "GNAT Lib v8"
+M P W=b
+P ZX
+
+RN
+RV NO_CALENDAR
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_ATTRIBUTES
+RV SPARK_05
+
+U zad2b%b		zad2b.adb		0b4ea3ed NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.calendar%s	a-calend.adb		a-calend.ali
+W ada.numerics%s	a-numeri.ads		a-numeri.ali
+W ada.numerics.float_random%s  a-nuflra.adb	a-nuflra.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+Z system.concat_3%s	s-conca3.adb		s-conca3.ali
+Z system.img_bool%s	s-imgboo.adb		s-imgboo.ali
+Z system.img_lld%s	s-imglld.adb		s-imglld.ali
+W zad2s%s		zad2s.adb		zad2s.ali
+
+D ada.ads		20170911084841 76789da1 ada%s
+D a-calend.ads		20180111085525 2d5f01d4 ada.calendar%s
+D a-except.ads		20180111085525 291912d5 ada.exceptions%s
+D a-ioexce.ads		20170908151217 e4a01f64 ada.io_exceptions%s
+D a-numeri.ads		20170908151217 bb51c45a ada.numerics%s
+D a-nuflra.ads		20180111085525 4056ab7a ada.numerics.float_random%s
+D a-stream.ads		20180111085525 119b8fb3 ada.streams%s
+D a-tags.ads		20180111085525 491b781d ada.tags%s
+D a-textio.ads		20180111085525 881db35a ada.text_io%s
+D a-unccon.ads		20170908151217 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20180111085525 5ab55268 interfaces%s
+D i-cstrea.ads		20180111085525 e53d8b8e interfaces.c_streams%s
+D system.ads		20180111085525 4635ec04 system%s
+D s-conca3.ads		20180111085525 0b705ca5 system.concat_3%s
+D s-crtl.ads		20180111085525 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180111085525 54135002 system.exception_table%s
+D s-ficobl.ads		20180111085525 078245e4 system.file_control_block%s
+D s-imgboo.ads		20180111085525 f5d971eb system.img_bool%s
+D s-imglld.ads		20180111085525 f3220969 system.img_lld%s
+D s-parame.ads		20180111085525 f896c45c system.parameters%s
+D s-rannum.ads		20180111085525 99ade2f2 system.random_numbers%s
+D s-secsta.ads		20180111085525 283dec34 system.secondary_stack%s
+D s-soflin.ads		20180111085525 a7318a92 system.soft_links%s
+D s-stache.ads		20180111085525 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180111085525 09bd3940 system.standard_library%s
+D s-stoele.ads		20180111085525 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180111085525 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180111085525 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180111085525 1b7d22d2 system.wch_con%s
+D zad2b.adb		20181017201117 4f00a8f8 zad2b%b
+D zad2s.ads		20181017200925 a15a12e1 zad2s%s
+X 1 ada.ads
+16K9*Ada 20e8 30|4r6 4r19 4r46 5r5 5r18 5r45
+X 2 a-calend.ads
+36K13*Calendar 395e17 30|4w50 5r49
+44I9*Time<213I9> 30|10r13
+58V13*Clock{44I9} 30|17s11 32s11
+105V14*"-"{duration} 30|33s13
+213I9 Time_Rep<long_long_integer>
+X 5 a-numeri.ads
+16K13*Numerics 32e17 30|4r23 5r22
+X 6 a-nuflra.ads
+41K22*Float_Random 74e30 30|4w32 5r31
+X 9 a-textio.ads
+49K13*Text_IO 471e16 30|4w10 5r9
+166U14*New_Line 30|24s5 30s5
+242U14*Put 30|22s5 23s5 28s5 29s5
+263U14*Put_Line 30|34s5
+X 30 zad2b.adb
+7U11*Zad2b 7b11 37l5 37t10
+8a5 V1{31|5A10} 18r11 23r19 26m10 27r11 29r19 36r10
+9a5 V2{31|5A10} 19m16 20r11
+10i5 T1{2|44I9} 17m5 33r15
+10i9 T2{2|44I9} 32m5 33r10
+11o5 D{duration} 33m5 34r45
+13V14 Is_Sorted{boolean} 13>24 23s9 29s9
+13a24 V{31|5A10} 14r23 14r33 14r46 14r54
+14i18 I{integer} 14r48 14r56
+X 31 zad2s.ads
+4K9*Zad2s 30|4w60 5r59 31|11e10
+5A10*Vector(float)<integer> 30|8r9 9r9 13r27
+7U15*Print 30|18s5 20s5 27s5
+8U15*FillVector 30|19s5
+9U15*Sort 30|26s5
+10U15*Save 30|36s5
+
