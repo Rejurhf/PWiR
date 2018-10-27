@@ -82,6 +82,18 @@ procedure Lab4Lista is
         end loop;
     end Random_Insert;
 
+    function Search(List : Elem_Ptr; V : in Integer) return Boolean is
+        L : access Element := List;
+    begin
+        while L /= Null loop
+            if L.Data = V then
+                return True;
+            end if;
+            L := L.Next;
+        end loop;
+        return False;
+    end Search;
+
 
     Lista : Elem_Ptr := Null;
 
@@ -104,4 +116,14 @@ procedure Lab4Lista is
 
       Random_Insert(Lista, 5);
       Print(Lista);
+
+      Put("Is 5? ");
+      Put(Search(Lista, 5)'Img);
+      New_Line;
+      Put("Is 84? ");
+      Put(Search(Lista, 84)'Img);
+      New_Line;
+      Put("Is 108? ");
+      Put(Search(Lista, 108)'Img);
+      New_Line;
 end Lab4Lista;
