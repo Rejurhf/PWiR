@@ -1,7 +1,7 @@
 -- Mateusz Ziomek
 -- 28.10.2018
 
-with Ada.Text_IO, Ada.Integer_Text_IO;
+with Ada.Text_IO, Ada.Integer_Text_IO, Ada.Numerics.Discrete_Random;
 use Ada.Text_IO, Ada.Integer_Text_IO;
 
 procedure Lab4Tree is
@@ -17,17 +17,21 @@ procedure Lab4Tree is
         T : access Leaf := Tree;
     begin
         if T.Left /= Null and T.Right /= Null then
-            Put(T.Data'Img & " L: " & T.Left.Data'Img & " R: " & T.Right.Data'Img);
+            Put(T.Data'Img & " {L:");
             Print_Leaf(T.Left);
+            Put(" R:");
             Print_Leaf(T.Right);
+            Put("}");
         elsif T.Left /= Null and T.Right = Null then
-            Put_Line(T.Data'Img & " L: " & T.Left.Data'Img & " R: Null");
+            Put(T.Data'Img & " {L: ");
             Print_Leaf(T.Left);
+            Put(" R: Null}");
         elsif T.Left = Null and T.Right /= Null then
-            Put_Line(T.Data'Img & " L: Null R: " & T.Right.Data'Img);
+            Put(T.Data'Img & " {L: Null R: ");
             Print_Leaf(T.Right);
+            Put("}");
         elsif T.Left = Null and T.Right = Null then
-            Put_Line(T.Data'Img & " L: Null R: Null");
+            Put(T.Data'Img & " {L: Null R: Null}");
         end if;
     end Print_Leaf;
 
@@ -78,5 +82,10 @@ procedure Lab4Tree is
 begin
     Print(Drzewo);
     Insert(Drzewo, 20);
+    Insert(Drzewo, 14);
+    Insert(Drzewo, 2);
+    Insert(Drzewo, 16);
+    Insert(Drzewo, 23);
+    Insert(Drzewo, 21);
     Print(Drzewo);
 end Lab4Tree;
