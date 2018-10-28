@@ -18,7 +18,7 @@ RV NO_IMPLEMENTATION_ATTRIBUTES
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U lab4tree%b		lab4tree.adb		b1782e39 NE OO SU
+U lab4tree%b		lab4tree.adb		29ab45a9 NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.integer_text_io%s	a-inteio.ads		a-inteio.ali
 W ada.numerics%s	a-numeri.ads		a-numeri.ali
@@ -27,6 +27,7 @@ Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W system%s		system.ads		system.ali
 Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.img_bool%s	s-imgboo.adb		s-imgboo.ali
 Z system.img_int%s	s-imgint.adb		s-imgint.ali
 Z system.random_numbers%s  s-rannum.adb		s-rannum.ali
 
@@ -44,12 +45,13 @@ D a-tiinio.ads		20180111085525 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20170908151217 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180111085525 5ab55268 interfaces%s
 D i-cstrea.ads		20180111085525 e53d8b8e interfaces.c_streams%s
-D lab4tree.adb		20181028182341 becb4928 lab4tree%b
+D lab4tree.adb		20181028183544 261822b8 lab4tree%b
 D system.ads		20180111085525 4635ec04 system%s
 D s-conca2.ads		20180111085525 02a0d7d0 system.concat_2%s
 D s-crtl.ads		20180111085525 0ebbdb71 system.crtl%s
 D s-exctab.ads		20180111085525 54135002 system.exception_table%s
 D s-ficobl.ads		20180111085525 078245e4 system.file_control_block%s
+D s-imgboo.ads		20180111085525 f5d971eb system.img_bool%s
 D s-imgint.ads		20180111085525 02dbe0c2 system.img_int%s
 D s-imguns.ads		20180111085525 9ff43cf7 system.img_uns%s
 D s-parame.ads		20180111085525 f896c45c system.parameters%s
@@ -73,46 +75,52 @@ X 5 a-numeri.ads
 16K13*Numerics 32e17 15|4r44 83r39
 X 6 a-nudira.ads
 44k22*Discrete_Random 75e33 15|4w53 83r48
-50R9 Generator<24|63R9> 15|85r14[83]
+50R9 Generator<25|63R9> 15|85r14[83]
 52V13 Random{integer} 15|90s26[83]
-55U14 Reset<24|100p14> 15|88s9[83]
+55U14 Reset<25|100p14> 15|88s9[83]
 X 7 a-nudira.adb
-53V16 Random[24|83]{integer} 25|392b13[15|83]
+53V16 Random[25|83]{integer} 26|392b13[15|83]
 X 10 a-textio.ads
 49K13*Text_IO 471e16 15|4w10 5r9
+166U14*New_Line 15|113s5
 242U14*Put 15|20s13 22s13 24s13 26s13 28s13 30s13 32s13 34s13
-263U14*Put_Line 15|41s13 43s13 87s9
+263U14*Put_Line 15|41s13 43s13 87s9 114s5 115s5
 X 13 interfac.ads
 74M9*Unsigned_32
 77M9*Unsigned_64
 X 15 lab4tree.adb
-7U11*Lab4Tree 7b11 101l5 101t13
+7U11*Lab4Tree 7b11 116l5 116t13
 8R10 Leaf 12e15
-9i9 Data{integer} 20r19 26r19 30r19 34r19 53m11 63r18 63r27
-10p9 Left 19r14 21r26 25r17 27r26 29r17 33r17 54m11 64r22 65m23 68r28
-11p9 Right 19r33 23r26 25r36 29r35 31r26 33r35 55m11 71r22 72m23 75r28
-14P10 Leaf_Ptr 48r36 50r13 81r43 94r14
+9i9 Data{integer} 20r19 26r19 30r19 34r19 53m11 63r18 63r27 98r20
+10p9 Left 19r14 21r26 25r17 27r26 29r17 33r17 54m11 64r22 65m23 68r28 102r28
+11p9 Right 19r33 23r26 25r36 29r35 31r26 33r35 55m11 71r22 72m23 75r28 102r52
+14P10 Leaf_Ptr 48r36 50r13 81r43 94r28 105r14
 16U15 Print_Leaf 16b15 16^26 21s13 23s13 27s13 31s13 36l9 36t19 44s13
 16p26 Tree(8R10) 17r28
 17p9 T(8R10) 19r12 19r31 20r17 21r24 23r24 25r15 25r34 26r17 27r24 29r15
 . 29r33 30r17 31r24 33r15 33r33 34r17
-38U15 Print 38b15 38^21 46l9 46t14 96s5 98s5 100s5
+38U15 Print 38b15 38^21 46l9 46t14 107s5 109s5 111s5
 38p21 Tree(8R10) 40r12 44r24
-48U15 Insert 48b15 48=22 48>46 79l9 79t15 90s13 97s5
+48U15 Insert 48b15 48=22 48>46 79l9 79t15 90s13 108s5
 48p22 Tree{14P10} 49r28 58m13
 48i46 D{integer} 53r19
 49p9 T(8R10) 57r21 63r25 64r20 65r21 68m21 68r26 71r20 72r21 75m21 75r26
 50p9 L{14P10} 53r9 54r9 55r9 58r21 63r16 65r31 72r32
 51b9 Flag{boolean} 57r12 59m13 62r15 66m21 73m21
-81U15 Random_Insert 81b15 81=29 81>53 92l9 92t22 99s5
+81U15 Random_Insert 81b15 81=29 81>53 92l9 92t22 110s5
 81p29 Tree{14P10} 90m20
 81i53 N{integer} 89r21
 82I17 Numbers{integer} 83r64
 83K17 Los_Liczby[6|44] 84r13
 85r9 Gen{6|50R9[83]} 88r15 90r33
 89i13 I{integer}
-94p5 Drzewo{14P10} 96r11 97m12 97r12 98r11 99m19 99r19 100r11
-X 24 s-rannum.ads
-75V13*Random{13|74M9} 25|221i21
-76V13*Random{13|77M9} 25|221i21
+94V14 Search{boolean} 94b14 94>21 94>38 102s16 102s40 103l9 103t15 114s26
+. 115s26
+94p21 Tree{14P10} 96r12 98r15 102r23 102r47
+94i38 V{integer} 98r27 102r34 102r59
+105p5 Drzewo{14P10} 107r11 108m12 108r12 109r11 110m19 110r19 111r11 114r33
+. 115r33
+X 25 s-rannum.ads
+75V13*Random{13|74M9} 26|221i21
+76V13*Random{13|77M9} 26|221i21
 

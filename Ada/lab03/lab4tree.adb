@@ -79,7 +79,7 @@ procedure Lab4Tree is
     end Insert;
 
     procedure Random_Insert(Tree : in out Leaf_Ptr; N : in Integer) is
-        subtype Numbers is Integer range 0..99;
+        subtype Numbers is Integer range 0..50;
         package Los_Liczby is new Ada.Numerics.Discrete_Random(Numbers);
         use Los_Liczby;
         Gen: Generator;
@@ -91,11 +91,26 @@ procedure Lab4Tree is
         end loop;
     end Random_Insert;
 
+    function Search(Tree : Leaf_Ptr; V : in Integer) return Boolean is
+    begin
+        if Tree = Null then
+            return False;
+        elsif Tree.Data = V then
+            return True;
+        end if;
+
+        return Search(Tree.Left, V) or Search(Tree.Right, V);
+    end Search;
+
     Drzewo : Leaf_Ptr := Null;
 begin
     Print(Drzewo);
-    Insert(Drzewo, 50);
+    Insert(Drzewo, 25);
     Print(Drzewo);
     Random_Insert(Drzewo, 10);
     Print(Drzewo);
+
+    New_Line;
+    Put_Line("Is 25? " & Search(Drzewo, 25)'Img);
+    Put_Line("Is 40? " & Search(Drzewo, 40)'Img);
 end Lab4Tree;
