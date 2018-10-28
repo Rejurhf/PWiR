@@ -141,6 +141,28 @@ procedure Lab4Tree is
         end if;
     end Delete_Item;
 
+    function RotateRight(Tree : in out Leaf_Ptr) return Integer is
+        T : Leaf_Ptr := new Leaf;
+    begin
+        if Tree.Left /= Null then
+            T := Tree.Left;
+            Tree.Left := T.Right;
+            T.Right := Tree;
+            Tree := T;
+            return 1 + RotateRight(Tree);
+        elsif Tree.Right /= Null then
+            return 1 + RotateRight(Tree.Right);
+        end if;
+        return 0;
+    end RotateRight;
+
+    procedure BalanceBST(Tree : in out Leaf_Ptr) is
+        N : Integer := 0;
+    begin
+        N := RotateRight(Tree);
+        Put_Line(N'Img);
+    end BalanceBST;
+
     Drzewo : Leaf_Ptr := Null;
 begin
     Print(Drzewo);
@@ -155,21 +177,23 @@ begin
     Insert(Drzewo, 26);
     Print(Drzewo);
 
-    Put_Line("Is 25? " & Search(Drzewo, 25)'Img);
-    Put_Line("Is 40? " & Search(Drzewo, 40)'Img);
-    Put_Line("Is 55? " & Search(Drzewo, 55)'Img);
-    Put_Line("Is 65? " & Search(Drzewo, 65)'Img);
-    Put_Line("Is 67? " & Search(Drzewo, 67)'Img);
+    -- Put_Line("Is 25? " & Search(Drzewo, 25)'Img);
+    -- Put_Line("Is 40? " & Search(Drzewo, 40)'Img);
+    -- Put_Line("Is 55? " & Search(Drzewo, 55)'Img);
+    -- Put_Line("Is 65? " & Search(Drzewo, 65)'Img);
+    -- Put_Line("Is 67? " & Search(Drzewo, 67)'Img);
+    -- Delete_Item(Drzewo, 40);
+    -- Delete_Item(Drzewo, 55);
+    -- Delete_Item(Drzewo, 65);
+    -- Delete_Item(Drzewo, 25);
+    -- Delete_Item(Drzewo, 67);
+    -- Put_Line("Is 25? " & Search(Drzewo, 25)'Img);
+    -- Put_Line("Is 40? " & Search(Drzewo, 40)'Img);
+    -- Put_Line("Is 55? " & Search(Drzewo, 55)'Img);
+    -- Put_Line("Is 65? " & Search(Drzewo, 65)'Img);
+    -- Put_Line("Is 67? " & Search(Drzewo, 67)'Img);
+    -- Print(Drzewo);
 
-    Delete_Item(Drzewo, 40);
-    Delete_Item(Drzewo, 55);
-    Delete_Item(Drzewo, 65);
-    Delete_Item(Drzewo, 25);
-    Delete_Item(Drzewo, 67);
-    Put_Line("Is 25? " & Search(Drzewo, 25)'Img);
-    Put_Line("Is 40? " & Search(Drzewo, 40)'Img);
-    Put_Line("Is 55? " & Search(Drzewo, 55)'Img);
-    Put_Line("Is 65? " & Search(Drzewo, 65)'Img);
-    Put_Line("Is 67? " & Search(Drzewo, 67)'Img);
+    BalanceBST(Drzewo);
     Print(Drzewo);
 end Lab4Tree;
