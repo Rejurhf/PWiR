@@ -43,6 +43,7 @@ procedure Lab4Tree is
             Put_Line("Tree:");
             Print_Leaf(Tree);
         end if;
+        New_Line;
     end Print;
 
     procedure Insert(Tree : in out Leaf_Ptr; D : in Integer) is
@@ -99,18 +100,76 @@ procedure Lab4Tree is
             return True;
         end if;
 
-        return Search(Tree.Left, V) or Search(Tree.Right, V);
+        if V < Tree.Data then
+            return Search(Tree.Left, V);
+        else
+            return Search(Tree.Right, V);
+        end if;
     end Search;
+
+    function MinValue(Tree: in out Leaf_Ptr) return Integer is
+        V : Integer;
+    begin
+        if Tree.Left = Null then
+            V := Tree.Data;
+            Tree := Null;
+            return V;
+        else
+            return MinValue(Tree.Left);
+        end if;
+    end MinValue;
+
+    procedure Delete_Item(Tree : in out Leaf_Ptr; V : in Integer) is
+    begin
+        if Tree /= Null then
+            if Tree.Data = V then
+                if Tree.Left = Null and Tree.Right = Null then
+                    Tree := Null;
+                elsif Tree.Left /= Null and Tree.Right = Null then
+                    Tree := Tree.Left;
+                elsif Tree.Left = Null and Tree.Right /= Null then
+                    Tree := Tree.Right;
+                elsif Tree.Left /= Null and Tree.Right /= Null then
+                    Tree.Data := MinValue(Tree.Right);
+                end if;
+                Put_Line("Usunięto element:" & V'Img);
+            elsif V < Tree.Data then
+                Delete_Item(Tree.Left, V);
+            else
+                Delete_Item(Tree.Right, V);
+            end if;
+        end if;
+    end Delete_Item;
 
     Drzewo : Leaf_Ptr := Null;
 begin
     Print(Drzewo);
     Insert(Drzewo, 25);
     Print(Drzewo);
-    Random_Insert(Drzewo, 10);
+    Random_Insert(Drzewo, 3);
+    Insert(Drzewo, 60);
+    Insert(Drzewo, 55);
+    Insert(Drzewo, 52);
+    Insert(Drzewo, 65);
+    Insert(Drzewo, 67);
+    Insert(Drzewo, 26);
     Print(Drzewo);
 
-    New_Line;
     Put_Line("Is 25? " & Search(Drzewo, 25)'Img);
     Put_Line("Is 40? " & Search(Drzewo, 40)'Img);
+    Put_Line("Is 55? " & Search(Drzewo, 55)'Img);
+    Put_Line("Is 65? " & Search(Drzewo, 65)'Img);
+    Put_Line("Is 67? " & Search(Drzewo, 67)'Img);
+
+    Delete_Item(Drzewo, 40);
+    Delete_Item(Drzewo, 55);
+    Delete_Item(Drzewo, 65);
+    Delete_Item(Drzewo, 25);
+    Delete_Item(Drzewo, 67);
+    Put_Line("Is 25? " & Search(Drzewo, 25)'Img);
+    Put_Line("Is 40? " & Search(Drzewo, 40)'Img);
+    Put_Line("Is 55? " & Search(Drzewo, 55)'Img);
+    Put_Line("Is 65? " & Search(Drzewo, 65)'Img);
+    Put_Line("Is 67? " & Search(Drzewo, 67)'Img);
+    Print(Drzewo);
 end Lab4Tree;
