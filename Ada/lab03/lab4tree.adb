@@ -23,11 +23,11 @@ procedure Lab4Tree is
             Print_Leaf(T.Right);
             Put("}");
         elsif T.Left /= Null and T.Right = Null then
-            Put(T.Data'Img & " {L: ");
+            Put(T.Data'Img & " {L:");
             Print_Leaf(T.Left);
             Put(" R: Null}");
         elsif T.Left = Null and T.Right /= Null then
-            Put(T.Data'Img & " {L: Null R: ");
+            Put(T.Data'Img & " {L: Null R:");
             Print_Leaf(T.Right);
             Put("}");
         elsif T.Left = Null and T.Right = Null then
@@ -78,14 +78,24 @@ procedure Lab4Tree is
         end loop;
     end Insert;
 
+    procedure Random_Insert(Tree : in out Leaf_Ptr; N : in Integer) is
+        subtype Numbers is Integer range 0..99;
+        package Los_Liczby is new Ada.Numerics.Discrete_Random(Numbers);
+        use Los_Liczby;
+        Gen: Generator;
+    begin
+        Put_Line("iksde");
+        Reset(Gen);
+        for I in 1..N loop
+            Insert(Tree, Random(Gen));
+        end loop;
+    end Random_Insert;
+
     Drzewo : Leaf_Ptr := Null;
 begin
     Print(Drzewo);
-    Insert(Drzewo, 20);
-    Insert(Drzewo, 14);
-    Insert(Drzewo, 2);
-    Insert(Drzewo, 16);
-    Insert(Drzewo, 23);
-    Insert(Drzewo, 21);
+    Insert(Drzewo, 50);
+    Print(Drzewo);
+    Random_Insert(Drzewo, 10);
     Print(Drzewo);
 end Lab4Tree;
