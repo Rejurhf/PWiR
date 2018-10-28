@@ -94,25 +94,46 @@ procedure Lab4Lista is
         return False;
     end Search;
 
+    procedure Delete_Item(List : in out Elem_Ptr; V : in Integer) is
+        L : access Element := List;
+        E : Elem_Ptr := new Element;
+        Flag : Boolean := True;
+    begin
+        if Flag = True and L.Data = V then
+            List := L.Next;
+            Put_Line("Element usuniety.");
+        end if;
+        while L.Data /= V and L.Next /= Null and Flag = True loop
+            if L.Next /= Null and L.Next.Data = V then
+                L.Next := L.Next.Next;
+                Flag := False;
+                Put_Line("Element usuniety.");
+            end if;
+            L := L.Next;
+        end loop;
+        if Flag = True then
+            Put_Line("Takiego elementu nie było na liście.");
+        end if;
+    end Delete_Item;
 
     Lista : Elem_Ptr := Null;
 
     begin
       Print(Lista);
       Lista := Insert(Lista, 21);
-      Print(Lista);
+      -- Print(Lista);
       Insert(Lista, 20);
-      Print(Lista);
+      -- Print(Lista);
       for I in reverse 1..5 loop
       Insert(Lista, I);
       end loop;
-      Print(Lista);
+      -- Print(Lista);
 
       Insert_Sort(Lista, 14);
       Insert_Sort(Lista, 0);
       Insert_Sort(Lista, 25);
       Insert_Sort(Lista, 18);
-      Print(Lista);
+      -- Print(Lista);
 
       Random_Insert(Lista, 5);
       Print(Lista);
@@ -126,4 +147,18 @@ procedure Lab4Lista is
       Put("Is 108? ");
       Put(Search(Lista, 108)'Img);
       New_Line;
+
+      Delete_Item(Lista, 5);
+      Delete_Item(Lista, 84);
+      Delete_Item(Lista, 108);
+      Put("Is 5? ");
+      Put(Search(Lista, 5)'Img);
+      New_Line;
+      Put("Is 84? ");
+      Put(Search(Lista, 84)'Img);
+      New_Line;
+      Put("Is 108? ");
+      Put(Search(Lista, 108)'Img);
+      New_Line;
+      Print(Lista);
 end Lab4Lista;
