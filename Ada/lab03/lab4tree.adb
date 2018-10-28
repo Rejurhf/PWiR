@@ -5,8 +5,7 @@ with Ada.Text_IO, Ada.Integer_Text_IO;
 use Ada.Text_IO, Ada.Integer_Text_IO;
 
 procedure Lab4Tree is
-    type Leaf is
-    record
+    type Leaf is record
         Data: Integer := 0;
         Left: access Leaf := Null;
         Right: access Leaf := Null;
@@ -42,8 +41,42 @@ procedure Lab4Tree is
         end if;
     end Print;
 
+    procedure Insert(Tree : in out Leaf_Ptr; D : in Integer) is
+        T : access Leaf := Tree;
+        L : Leaf_Ptr := new Leaf;
+        Flag : Boolean := True;
+    begin
+        L.Data := D;
+        L.Left := Null;
+        L.Right := Null;
+
+        if Flag and T = Null then
+            Tree := L;
+            Flag := False;
+        end if;
+
+        while Flag loop
+            if L.Data < T.Data then
+                if T.Left = Null then
+                    T.Left := L;
+                    Flag := False;
+                else
+                    T := T.Left;
+                end if;
+            else
+                if T.Right = Null then
+                    T.Right := L;
+                    Flag := False;
+                else
+                    T := T.Right;
+                end if;
+            end if;
+        end loop;
+    end Insert;
 
     Drzewo : Leaf_Ptr := Null;
 begin
+    Print(Drzewo);
+    Insert(Drzewo, 20);
     Print(Drzewo);
 end Lab4Tree;
