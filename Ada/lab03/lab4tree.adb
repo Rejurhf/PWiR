@@ -31,7 +31,7 @@ procedure Lab4Tree is
             Print_Leaf(T.Right);
             Put("}");
         elsif T.Left = Null and T.Right = Null then
-            Put(T.Data'Img & " {L: Null R: Null}");
+            Put(T.Data'Img);
         end if;
     end Print_Leaf;
 
@@ -45,6 +45,34 @@ procedure Lab4Tree is
         end if;
         New_Line;
     end Print;
+
+    procedure MakeRelations(Tree : access Leaf; Pl : in File_Type) is
+        T : access Leaf := Tree;
+        Str : String := "";
+    begin
+        if T.Left /= Null and T.Right /= Null then
+            Put_Line(Pl, T.Data'Img & " --" & T.Left.Data'Img);
+            MakeRelations(T.Left, Pl);
+            Put_Line(Pl, T.Data'Img & " --" & T.Right.Data'Img);
+            MakeRelations(T.Right, Pl);
+        elsif T.Left /= Null and T.Right = Null then
+            Put_Line(Pl, T.Data'Img & " --" & T.Left.Data'Img);
+            MakeRelations(T.Left, Pl);
+        elsif T.Left = Null and T.Right /= Null then
+            Put_Line(Pl, T.Data'Img & " --" & T.Right.Data'Img);
+            MakeRelations(T.Right, Pl);
+        end if;
+    end MakeRelations;
+
+    procedure MakeDOT(Tree : Leaf_Ptr) is
+        Pl : File_Type;
+        Name: String := "graf.dot";
+    begin
+        Create(Pl, Out_File, Name);
+        Put_Line(Pl, "graph graf {");
+        MakeRelations(Tree, Pl);
+        Put_Line(Pl, "}");
+    end MakeDOT;
 
     procedure Insert(Tree : in out Leaf_Ptr; D : in Integer) is
         T : access Leaf := Tree;
@@ -85,7 +113,6 @@ procedure Lab4Tree is
         use Los_Liczby;
         Gen: Generator;
     begin
-        Put_Line("iksde");
         Reset(Gen);
         for I in 1..N loop
             Insert(Tree, Random(Gen));
@@ -168,32 +195,28 @@ begin
     Print(Drzewo);
     Insert(Drzewo, 25);
     Print(Drzewo);
+    Insert(Drzewo, 10);
+    Insert(Drzewo, 40);
+    Insert(Drzewo, 5);
+    Insert(Drzewo, 15);
+    Insert(Drzewo, 30);
+    Insert(Drzewo, 45);
+    Insert(Drzewo, 8);
+    Insert(Drzewo, 31);
+    Insert(Drzewo, 27);
     Random_Insert(Drzewo, 3);
-    Insert(Drzewo, 60);
-    Insert(Drzewo, 55);
-    Insert(Drzewo, 52);
-    Insert(Drzewo, 65);
-    Insert(Drzewo, 67);
-    Insert(Drzewo, 26);
     Print(Drzewo);
 
     -- Put_Line("Is 25? " & Search(Drzewo, 25)'Img);
-    -- Put_Line("Is 40? " & Search(Drzewo, 40)'Img);
-    -- Put_Line("Is 55? " & Search(Drzewo, 55)'Img);
-    -- Put_Line("Is 65? " & Search(Drzewo, 65)'Img);
     -- Put_Line("Is 67? " & Search(Drzewo, 67)'Img);
-    -- Delete_Item(Drzewo, 40);
-    -- Delete_Item(Drzewo, 55);
-    -- Delete_Item(Drzewo, 65);
     -- Delete_Item(Drzewo, 25);
     -- Delete_Item(Drzewo, 67);
     -- Put_Line("Is 25? " & Search(Drzewo, 25)'Img);
-    -- Put_Line("Is 40? " & Search(Drzewo, 40)'Img);
-    -- Put_Line("Is 55? " & Search(Drzewo, 55)'Img);
-    -- Put_Line("Is 65? " & Search(Drzewo, 65)'Img);
     -- Put_Line("Is 67? " & Search(Drzewo, 67)'Img);
     -- Print(Drzewo);
 
-    BalanceBST(Drzewo);
-    Print(Drzewo);
+    -- BalanceBST(Drzewo);
+    -- Print(Drzewo);
+
+    MakeDOT(Drzewo);
 end Lab4Tree;
