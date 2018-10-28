@@ -43,7 +43,7 @@ D a-tiinio.ads		20180111085525 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20170908151217 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180111085525 5ab55268 interfaces%s
 D i-cstrea.ads		20180111085525 e53d8b8e interfaces.c_streams%s
-D lab4lista.adb		20181028162528 3f8c47f2 lab4lista%b
+D lab4lista.adb		20181028170129 3f8c47f2 lab4lista%b
 D system.ads		20180111085525 4635ec04 system%s
 D s-crtl.ads		20180111085525 0ebbdb71 system.crtl%s
 D s-exctab.ads		20180111085525 54135002 system.exception_table%s
