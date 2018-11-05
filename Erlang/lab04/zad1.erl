@@ -4,7 +4,7 @@
 -module(zad1).
 -import(math,[pi/0]).
 -export([pole/1, objetosc/1, len/1, amin/1, amax/1, tmin_max/1,
-    lmin_max/1, fields/1, desclist/1]).
+    lmin_max/1, fields/1, desclist/1, temp_conv/2]).
 
 
 pole({kwadrat,X,Y}) ->  X*Y;
@@ -31,8 +31,7 @@ amin([H|T]) -> amin(T, H);
 amin([]) -> 666.
 
 amin([H|T], E) ->
-    if
-        H < E ->
+    if H < E ->
             amin(T,H);
         true ->
             amin(T,E)
@@ -44,8 +43,7 @@ amax([H|T]) -> amax(T, H);
 amax([]) -> -666.
 
 amax([H|T], E) ->
-    if
-        H > E ->
+    if H > E ->
             amax(T,H);
         true ->
             amax(T,E)
@@ -57,8 +55,7 @@ tmin_max([H|T]) -> tmin_max(T, {H,H});
 tmin_max([]) -> {-666,666}.
 
 tmin_max([H|T], {S,B}) ->
-    if
-        H > B ->
+    if H > B ->
             tmin_max(T,{S,H});
         H < S ->
             tmin_max(T,{H,B});
@@ -72,13 +69,12 @@ lmin_max([H|T]) -> lmin_max(T, [H,H]);
 lmin_max([]) -> [-666,666].
 
 lmin_max([H|T], [S,B]) ->
-    if
-        H > B ->
-            lmin_max(T,[S,H]);
-        H < S ->
-            lmin_max(T,[H,B]);
-        true ->
-            lmin_max(T,[S,B])
+    if H > B ->
+        lmin_max(T,[S,H]);
+    H < S ->
+        lmin_max(T,[H,B]);
+    true ->
+        lmin_max(T,[S,B])
     end;
 lmin_max([], E) -> E.
 
@@ -101,4 +97,30 @@ desclist(N, [H|T]) ->
         desclist(N, [H+1|[H|T]]);
     true ->
         [H|T]
+    end.
+
+% Temperature converter
+temp_conv({c, T}, D) ->
+    if D == k ->
+        {k, T + 273.15};
+    D == f ->
+        {f, (9/5 * T) + 32};
+    true ->
+        {c, T}
+    end;
+temp_conv({k, T}, D) ->
+    if D == c ->
+        {c, T - 273.15};
+    D == f ->
+        temp_conv({c, T - 273.15}, f);
+    true ->
+        {k, T}
+    end;
+temp_conv({f, T}, D) ->
+    if D == k ->
+        temp_conv({c, 5/9 * (T - 32)}, k);
+    D == c ->
+        {c, 5/9 * (T - 32)};
+    true ->
+        {f, T}
     end.
