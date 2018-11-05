@@ -1,6 +1,6 @@
 -module(zad1).
 -import(math,[pi/0]).
--export([pole/1, objetosc/1, len/1]).
+-export([pole/1, objetosc/1, len/1, amin/1, amax/1]).
 
 pole({kwadrat,X,Y}) ->  X*Y;
 pole({trojkat,A,H}) ->  A*H/2;
@@ -19,3 +19,27 @@ len(L) -> len(L, 0).
 % support function len
 len([_|T],L) -> len(T, L+1);
 len([],L) -> L.
+
+%find min
+amin([H|T]) -> amin(T, H);
+amin([]) -> 666.
+amin([H|T], E) ->
+    if
+        H < E ->
+            amin(T,H);
+        true ->
+            amin(T,E)
+    end;
+amin([], E) -> E.
+
+% find max
+amax([H|T]) -> amax(T, H);
+amax([]) -> -666.
+amax([H|T], E) ->
+    if
+        H > E ->
+            amax(T,H);
+        true ->
+            amax(T,E)
+    end;
+amax([], E) -> E.
