@@ -1,6 +1,6 @@
 -module(zad1).
 -import(math,[pi/0]).
--export([pole/1, objetosc/1, len/1, amin/1, amax/1]).
+-export([pole/1, objetosc/1, len/1, amin/1, amax/1, tmin_max/1, lmin_max/1]).
 
 pole({kwadrat,X,Y}) ->  X*Y;
 pole({trojkat,A,H}) ->  A*H/2;
@@ -43,3 +43,31 @@ amax([H|T], E) ->
             amax(T,E)
     end;
 amax([], E) -> E.
+
+% find min and max
+tmin_max([H|T]) -> tmin_max(T, {H,H});
+tmin_max([]) -> {-666,666}.
+tmin_max([H|T], {S,B}) ->
+    if
+        H > B ->
+            tmin_max(T,{S,H});
+        H < S ->
+            tmin_max(T,{H,B});
+        true ->
+            tmin_max(T,{S,B})
+    end;
+tmin_max([], E) -> E.
+
+% find min and max list
+lmin_max([H|T]) -> lmin_max(T, [H,H]);
+lmin_max([]) -> [-666,666].
+lmin_max([H|T], [S,B]) ->
+    if
+        H > B ->
+            lmin_max(T,[S,H]);
+        H < S ->
+            lmin_max(T,[H,B]);
+        true ->
+            lmin_max(T,[S,B])
+    end;
+lmin_max([], E) -> E.
