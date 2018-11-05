@@ -4,7 +4,7 @@
 -module(zad1).
 -import(math,[pi/0]).
 -export([pole/1, objetosc/1, len/1, amin/1, amax/1, tmin_max/1,
-    lmin_max/1, fields/1, desclist/1, temp_conv/2]).
+    lmin_max/1, fields/1, desclist/1, temp_conv/2, list_gen/1, list_gen/2]).
 
 
 pole({kwadrat,X,Y}) ->  X*Y;
@@ -124,3 +124,19 @@ temp_conv({f, T}, D) ->
     true ->
         {f, T}
     end.
+
+% List generator
+list_gen(N) ->
+    if N > 0 ->
+        list_gen(N, 1, []);
+    true ->
+        []
+    end.
+list_gen(N, V) ->
+    if N > 0 ->
+        list_gen(N, V, []);
+    true ->
+        []
+    end.
+list_gen(0,_,L) -> L;
+list_gen(N,V,L) -> list_gen(N-1,V,[V|L]).
