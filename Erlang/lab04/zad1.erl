@@ -4,7 +4,7 @@
 -module(zad1).
 -import(math,[pi/0]).
 -export([pole/1, objetosc/1, len/1, amin/1, amax/1, tmin_max/1,
-    lmin_max/1, fields/1]).
+    lmin_max/1, fields/1, desclist/1]).
 
 
 pole({kwadrat,X,Y}) ->  X*Y;
@@ -89,3 +89,16 @@ fields([H|T], L) -> fields(T, [pole(H)|L]);
 fields([], L) -> L.
 
 % Descending list
+desclist(N) ->
+    if N > 0 ->
+            desclist(N,[1]);
+        true ->
+            []
+    end.
+
+desclist(N, [H|T]) ->
+    if N > H ->
+        desclist(N, [H+1|[H|T]]);
+    true ->
+        [H|T]
+    end.
