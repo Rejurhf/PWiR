@@ -1,7 +1,10 @@
+% Mateusz Ziomek
+% 5.11.2018
+
 -module(zad1).
 -import(math,[pi/0]).
--export([pole/1, objetosc/1, len/1, amin/1, amax/1, tmin_max/1, lmin_max/1,
-    fields/1]).
+-export([pole/1, objetosc/1, len/1, amin/1, amax/1, tmin_max/1,
+    lmin_max/1, fields/1]).
 
 
 pole({kwadrat,X,Y}) ->  X*Y;
@@ -17,13 +20,13 @@ objetosc({kula,R}) -> 4/3*R*R*R*pi();
 objetosc({szescian,A}) ->  A*A*A;
 objetosc({stozek,R,H}) ->  1/3*R*H*pi().
 
-% function init go to support function
+% Function init go to support function
 len(L) -> len(L, 0).
-% support function len
+% Support function len
 len([_|T],L) -> len(T, L+1);
 len([],L) -> L.
 
-%find min
+% Find min
 amin([H|T]) -> amin(T, H);
 amin([]) -> 666.
 
@@ -36,7 +39,7 @@ amin([H|T], E) ->
     end;
 amin([], E) -> E.
 
-% find max
+% Find max
 amax([H|T]) -> amax(T, H);
 amax([]) -> -666.
 
@@ -49,7 +52,7 @@ amax([H|T], E) ->
     end;
 amax([], E) -> E.
 
-% find min and max
+% Find min and max
 tmin_max([H|T]) -> tmin_max(T, {H,H});
 tmin_max([]) -> {-666,666}.
 
@@ -64,7 +67,7 @@ tmin_max([H|T], {S,B}) ->
     end;
 tmin_max([], E) -> E.
 
-% find min and max list
+% Find min and max list
 lmin_max([H|T]) -> lmin_max(T, [H,H]);
 lmin_max([]) -> [-666,666].
 
@@ -79,8 +82,10 @@ lmin_max([H|T], [S,B]) ->
     end;
 lmin_max([], E) -> E.
 
-% fields of all the figures from the list
+% Fields of all the figures from the list
 fields(L) -> fields(L,[]).
 
 fields([H|T], L) -> fields(T, [pole(H)|L]);
 fields([], L) -> L.
+
+% Descending list
