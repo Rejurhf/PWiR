@@ -6,7 +6,7 @@
 %-import(list,[split/2]).
 -export([pole/1, objetosc/1, len/1, amin/1, amax/1, tmin_max/1,
     lmin_max/1, fields/1, desclist/1, temp_conv/2, list_gen/1,
-    list_gen/2, mergesort/1]).
+    list_gen/2, mergesort/1, bubblesort/1]).
 
 
 pole({kwadrat,X,Y}) ->  X*Y;
@@ -154,3 +154,14 @@ merge([],L2,A) -> A++L2;
 merge(L1,[],A) -> A++L1;
 merge([H1|T1],[H2|T2], A) when H2>=H1 -> merge(T1,[H2|T2],A++[H1]);
 merge([H1|T1],[H2|T2], A) when H1>H2 -> merge([H1|T1],T2,A++[H2]).
+
+% Bubblesort
+bubblesort(L) -> bubblesort(L, [], false).
+
+bubblesort([A, B | T], Acc, _) when A > B ->
+    bubblesort([A | T], [B | Acc], true);
+bubblesort([A, B | T], Acc, Tainted) ->
+    bubblesort([B | T], [A | Acc], Tainted);
+bubblesort([A | T], Acc, Tainted) -> bubblesort(T, [A | Acc], Tainted);
+bubblesort([], Acc, true) -> bubblesort(lists:reverse(Acc));
+bubblesort([], Acc, false) -> lists:reverse(Acc).
