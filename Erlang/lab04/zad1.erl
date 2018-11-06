@@ -3,8 +3,10 @@
 
 -module(zad1).
 -import(math,[pi/0]).
+%-import(list,[split/2]).
 -export([pole/1, objetosc/1, len/1, amin/1, amax/1, tmin_max/1,
-    lmin_max/1, fields/1, desclist/1, temp_conv/2, list_gen/1, list_gen/2]).
+    lmin_max/1, fields/1, desclist/1, temp_conv/2, list_gen/1,
+    list_gen/2, mergesort/1]).
 
 
 pole({kwadrat,X,Y}) ->  X*Y;
@@ -140,3 +142,15 @@ list_gen(N, V) ->
     end.
 list_gen(0,_,L) -> L;
 list_gen(N,V,L) -> list_gen(N-1,V,[V|L]).
+
+% Merge sort
+mergesort([L]) -> [L];
+mergesort(L) ->
+    {L1,L2} = lists:split(length(L) div 2, L),
+    merge(mergesort(L1), mergesort(L2)).
+
+merge(L1,L2) -> merge(L1,L2,[]).
+merge([],L2,A) -> A++L2;
+merge(L1,[],A) -> A++L1;
+merge([H1|T1],[H2|T2], A) when H2>=H1 -> merge(T1,[H2|T2],A++[H1]);
+merge([H1|T1],[H2|T2], A) when H1>H2 -> merge([H1|T1],T2,A++[H2]).
