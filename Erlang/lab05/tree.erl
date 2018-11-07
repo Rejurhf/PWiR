@@ -3,7 +3,7 @@
 
 -module(tree).
 -export([empty/0, insert/2, lookup/2, randtree/1, listtree/1,
-   treetolist/2]).
+   treetolist/2, search/2]).
 
 empty() -> {node, 'nil'}.
 insert(Val, {node, 'nil'}) ->
@@ -28,6 +28,7 @@ listtree([]) -> empty();
 listtree([E]) -> insert(E, empty());
 listtree([H|T]) -> insert(H, listtree(T)).
 
+
 treetolist({node, 'nil'}, L) -> L;
 treetolist({node, {Val, {node, 'nil'}, {node, 'nil'}}}, L) -> [Val|L];
 treetolist({node, {Val, Left, {node, 'nil'}}}, L) ->
@@ -36,3 +37,15 @@ treetolist({node, {Val, {node, 'nil'}, Right}}, L) ->
    treetolist(Right, [Val|L]);
 treetolist({node, {Val, Left, Right}}, L) ->
    treetolist(Right, treetolist(Left, [Val|L])).
+
+
+search({node, {Val, _, _}}, SVal) when Val == SVal ->
+   'True';
+search({node, {Val, {node, 'nil'}, _}}, SVal) when Val > SVal ->
+   'False';
+search({node, {Val, _, {node, 'nil'}}}, SVal) when Val < SVal ->
+   'False';
+search({node, {Val, Left, _}}, SVal) when Val > SVal ->
+   search(Left, SVal);
+search({node, {Val, _, Right}}, SVal) when Val < SVal ->
+   search(Right, SVal).
