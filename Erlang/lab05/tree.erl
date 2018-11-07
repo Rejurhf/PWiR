@@ -1,5 +1,5 @@
 -module(tree).
--export([empty/0, insert/2, lookup/2, randinsert/1]).
+-export([empty/0, insert/2, lookup/2, randtree/1]).
 
 empty() -> {node, 'nil'}.
 insert(Val, {node, 'nil'}) ->
@@ -16,5 +16,5 @@ lookup(Val, {node, {NodeVal, Smaller, _}}) when Val < NodeVal ->
 lookup(Val, {node, {_, _, Larger}}) -> lookup(Val, Larger).
 
 
-randinsert(1) -> insert(random:uniform(99), empty());
-randinsert(N) -> insert(random:uniform(99), randinsert(N-1)).
+randtree(1) -> insert(random:uniform(99), empty());
+randtree(N) -> insert(random:uniform(99), randtree(N-1)).
