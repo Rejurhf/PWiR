@@ -1,5 +1,8 @@
+% Mateusz Ziomek
+% 7.11.2018
+
 -module(tree).
--export([empty/0, insert/2, lookup/2, randtree/1]).
+-export([empty/0, insert/2, lookup/2, randtree/1, listtree/1]).
 
 empty() -> {node, 'nil'}.
 insert(Val, {node, 'nil'}) ->
@@ -16,5 +19,10 @@ lookup(Val, {node, {NodeVal, Smaller, _}}) when Val < NodeVal ->
 lookup(Val, {node, {_, _, Larger}}) -> lookup(Val, Larger).
 
 
+randtree(0) -> empty();
 randtree(1) -> insert(random:uniform(99), empty());
 randtree(N) -> insert(random:uniform(99), randtree(N-1)).
+
+listtree([]) -> empty();
+listtree([E]) -> insert(E, empty());
+listtree([H|T]) -> insert(H, listtree(T)).
