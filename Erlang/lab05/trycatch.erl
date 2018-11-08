@@ -18,5 +18,6 @@ catcher(N) ->
 				error:X -> {N, caught, error, X}
 		end.
 
-catch_me() ->	[{I, (catch something_went_wrong(I))} || I <- [banan,ziemniak,kartofel,c2h5oh,as2o3]].
-
+catch_me() ->
+    [{I, (catch something_went_wrong(I))} || I <-
+        [banan,ziemniak,kartofel,c2h5oh,as2o3]].
