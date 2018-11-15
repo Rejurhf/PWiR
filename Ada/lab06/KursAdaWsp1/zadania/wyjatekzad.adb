@@ -19,4 +19,4 @@ end Zadanie;
 
 begin
   Null;
-end WyjatekZad;      
+end WyjatekZad;

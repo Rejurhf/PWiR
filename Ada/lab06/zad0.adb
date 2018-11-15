@@ -1,39 +1,58 @@
--- zadania1.adb
+-- Rejurhf
+-- 15.11.2018
 
 with Ada.Text_IO;
 use Ada.Text_IO;
 
 procedure zad0 is
-   -- task Zadanie_A;
-   task type Zadanie_B is
-   end Zadanie_B;
+task Klient is
+  entry Start;
+end Klient;
 
-   Z1 : Zadanie_B;
 
-   -- task body Zadanie_A is
-   -- begin
-   --   Put("P_A ");
-   --   for I in 1..10 loop
-   -- 	  Put("Z_A ");
-   --   end loop;
-   --   Put("K_A ");
-   -- end Zadanie_A;
+task Serwer is
+  entry Start;
+  entry Koniec;
+  entry We(I:Integer);
+end Serwer;
 
-   task body Zadanie_B is
-   begin
-     Put("P_B ");
-     for I in 1..10 loop
-   	  Put("Z_B ");
-     end loop;
-     Put("K_B ");
-   end Zadanie_B;
+
+task body Klient is
+begin
+  accept Start;
+  for K in 1..10 loop
+      Put_Line(K'Img);
+	  -- Serwer.We(K);
+  end loop;
+  -- Serwer.Koniec; 
+end Klient;
+
+
+task body Serwer is
+  Lok: Integer;
+begin
+  accept Start;
+  loop
+    select
+     accept We(I: in Integer) do
+	     Lok := I;
+     end We;
+	   Put_Line("Lok=" & Lok'Img);
+    or
+	 accept Koniec;
+ 	 exit;
+    end select;
+  end loop;
+
+  Put_Line("Koniec Serwer ");
+end Serwer;
 
 begin
-  Put("P_PG ");
-  for I in 1..10 loop
-  	Put("Z_PG ");
+  Serwer.Start;
+  for K in 1..10 loop
+      Serwer.We(K);
   end loop;
-  Put("K_PG ");
-  exception
-     when others => Put_Line("Wyjątek!");
+  Klient.Start;
+  Serwer.Koniec;
+  Put_Line("Koniec_PG ");
 end zad0;

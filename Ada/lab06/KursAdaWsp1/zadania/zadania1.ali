@@ -12,7 +12,7 @@ RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 RV MAX_TASKS=1+
 
-U zadania1%b		zadania1.adb		6e9c03a1 NE OO SU
+U zadania1%b		zadania1.adb		8c994e1c NE OO SU
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
@@ -64,7 +64,7 @@ D s-tassta.ads		20121029110946 70812003
 D s-traent.ads		20140225151139 b5116092
 D s-unstyp.ads		20140225151139 510692af
 D s-wchcon.ads		20140225151139 1b7d22d2
-D zadania1.adb		20181114121504 56f1f675
+D zadania1.adb		20181115181447 b4f4bbc8
 X 1 ada.ads
 16K9*Ada 19e8 41|3r6 4r5
 X 8 a-textio.ads

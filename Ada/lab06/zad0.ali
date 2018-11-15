@@ -7,27 +7,35 @@ RV NO_EXCEPTION_HANDLERS
 RV NO_EXCEPTIONS
 RV NO_IO
 RV NO_IMPLICIT_DYNAMIC_CODE
+RV NO_SELECT_STATEMENTS
 RV NO_STANDARD_STORAGE_POOLS
 RV NO_TASK_HIERARCHY
 RV NO_TASKING
 RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_ATTRIBUTES
 RV SPARK_05
+RV MAX_SELECT_ALTERNATIVES=2
+RV MAX_TASK_ENTRIES=1
 RV MAX_TASKS=1+
 
-U zad0%b		zad0.adb		f49ad013 NE OO SU IL
+U zad0%b		zad0.adb		6a83c0b1 NE OO SU IL
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 W ada.tags%s		a-tags.adb		a-tags.ali
 W ada.text_io%s		a-textio.adb		a-textio.ali
 W system%s		system.ads		system.ali
+W system.concat_2%s	s-conca2.adb		s-conca2.ali
+W system.img_int%s	s-imgint.adb		s-imgint.ali
 W system.parameters%s	s-parame.adb		s-parame.ali
 W system.soft_links%s	s-soflin.adb		s-soflin.ali
 W system.task_info%s	s-tasinf.adb		s-tasinf.ali
 W system.tasking%s	s-taskin.adb		s-taskin.ali
+W system.tasking.rendezvous%s  s-tasren.adb	s-tasren.ali
 W system.tasking.stages%s  s-tassta.adb		s-tassta.ali
 
 D ada.ads		20070406091342 3ffc8e18 ada%s
 D a-except.ads		20140730140058 5250cb69 ada.exceptions%s
+D a-finali.ads		20140611123707 69f99942 ada.finalization%s
 D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
 D a-reatim.ads		20141120112812 02069903 ada.real_time%s
 D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
@@ -39,9 +47,12 @@ D i-c.ads		20110801143639 5421119b interfaces.c%s
 D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
 D system.ads		20141031112219 1d274481 system%s
 D s-atacco.ads		20120515093410 4c36d12f system.address_to_access_conversions%s
+D s-conca2.ads		20140225151544 02a0d7d0 system.concat_2%s
 D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
 D s-exctab.ads		20140225151139 54135002 system.exception_table%s
 D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-finroo.ads		20120426095924 4ff27390 system.finalization_root%s
+D s-imgint.ads		20090409150019 02dbe0c2 system.img_int%s
 D s-linux.ads		20150107101203 2fda6ad1 system.linux%s
 D s-multip.ads		20101011073009 38ac9f73 system.multiprocessors%s
 D s-oscons.ads		20180621202202 4bd50652 system.os_constants%s
@@ -56,24 +67,33 @@ D s-tasinf.ads		20140613095942 2b3f8252 system.task_info%s
 D s-taspri.ads		20141120144719 e3ab4429 system.task_primitives%s
 D s-taprop.ads		20140521131406 1dd2e1b6 system.task_primitives.operations%s
 D s-taskin.ads		20150106085750 339749f0 system.tasking%s
+D s-taprob.ads		20110927094500 502249e3 system.tasking.protected_objects%s
+D s-tpoben.ads		20121029113218 b641f948 system.tasking.protected_objects.entries%s
+D s-tasren.ads		20120208100446 a67a9949 system.tasking.rendezvous%s
 D s-tassta.ads		20121029110946 70812003 system.tasking.stages%s
 D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20140731130224 9d58a4c0 system.unsigned_types%s
 D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
-D zad0.adb		20181114124850 ccf725c7 zad0%b
+D zad0.adb		20181115193217 52ee3565 zad0%b
 X 1 ada.ads
-16K9*Ada 19e8 35|3r6 4r5
-X 7 a-textio.ads
-49K13*Text_IO 471e16 35|3w10 4r9
-242U14*Put 35|26s6 28s11 30s6 34s3 36s9 38s3
-263U14*Put_Line 35|40s21
-X 24 s-stausa.ads
+16K9*Ada 19e8 42|4r6 5r5
+X 8 a-textio.ads
+49K13*Text_IO 471e16 42|4w10 5r9
+263U14*Put_Line 42|24s7 40s12 47s3 57s3
+X 28 s-stausa.ads
 203U14*Initialize 204i<c,__gnat_stack_usage_initialize>22
 268U14*Output_Results 272i<c,__gnat_stack_usage_output_results>22
-X 35 zad0.adb
-6U11*zad0 6b11 41l5 41t9
-8T14 Zadanie_B 10l8 10e17 13r9 24b14 31l8 31t17
-13t4 Z1{8T14}
-27i10 I{integer}
-35i7 I{integer}
+X 42 zad0.adb
+7U11*zad0 7b11 58l5 58t9
+8t6 Klient 20b11 28l5 28t11 55r3
+9Y9 Start 22b10 55s10
+13t6 Serwer 31b11 48l5 48t11 51r3 53r7 56r3
+14Y9 Start 34b10 51s10
+15Y9 Koniec 42b17 56s10
+16Y9 We 16>12 37b13 39l10 39t12 53s14
+16i12 I{integer} 38r21
+23i7 K{integer} 24r16
+32i3 Lok{integer} 38m14 40r30
+37i16 I{integer}
+52i7 K{integer} 53r17
 

@@ -15,7 +15,7 @@ task body Zadanie_A is
 begin
   Put("P_A ");
   for I in 1..10 loop
-	  Put("Z_A ");
+	  Put("A ");
   end loop;
   Put("K_A ");
 end Zadanie_A;
@@ -24,7 +24,7 @@ task body Zadanie_B is
 begin
   Put("P_B ");
   for I in 1..10 loop
-	  Put("Z_B ");  			
+	  Put("B ");
   end loop;
   Put("K_B ");
 end Zadanie_B;
@@ -32,7 +32,7 @@ end Zadanie_B;
 begin
   Put("P_PG ");
   for I in 1..10 loop
-  	Put("Z_PG ");
+  	Put("PG ");
   end loop;
   Put("K_PG ");
 end Zadania1;
